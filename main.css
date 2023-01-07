@@ -1,0 +1,417 @@
+body {
+	background-color: #eceffc;
+	display: -webkit-box;
+	box-align: center;
+	align-items: center;
+	box-pack: center;
+	justify-content: center;
+	height: 70vh;
+}
+
+button {
+	background-color: #6ac560;
+	color: rgb(246, 244, 244);
+	border: none;
+	padding: 0 20px;
+	line-height: 50px;
+	border-radius: 10px;
+	box-shadow: -2px 3px 0px #d4d4d4;
+	font-size: 20px;
+    font-weight: bold;
+	cursor: pointer;
+	transition-duration: 0.3s;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.tapis-roulant {
+	position: relative;
+	background-color: rgb(22, 11, 111);
+	line-height: 0px;
+}
+
+.tapis-roulant span {
+	opacity: 0;
+}
+
+.tapis-roulant > div:nth-child(2) {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	border-radius: 20px;
+	z-index: 2;
+	background-color: rgb(27, 184, 92);
+}
+
+.tapis-roulant > div:nth-child(2) > div {
+	display: flex;
+	height: 20px;
+	width: 200%;
+	border-radius: 30px;
+	animation-name: roule;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	transform: translateX(-50%);
+}
+
+.tapis-roulant i {
+	height: 100%;
+	width: 2px;
+	background-color: #c5e5ba;
+	display: inline-block;
+	transform: skew(52deg, 20deg);
+	margin: 0 2%;
+}
+
+.tapis-roulant > div:nth-child(3) {
+	position: absolute;
+	left: 55%;
+	width: 35px;
+	height: 0;
+	background-color: #000000;
+	z-index: 1;
+	bottom: 0;
+	animation-name: caisse;
+	animation-duration: 0.3s;
+	animation-delay: 0.05s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	overflow: hidden;
+	border: 2px solid #a0a0a0;
+}
+
+.tapis-roulant > div:nth-child(3) > 
+div:first-child {
+	position: absolute;
+	z-index: 4;
+	width: 100%;
+	height: 75%;
+	background-image: linear-gradient(
+		9deg,
+		rgba(84, 84, 84, 0),
+		hsl(0deg 0% 56% / 61%) 70%
+	);
+	top: 0;
+}
+
+.tapis-roulant > div:nth-child(3) > div:nth-child(2) {
+	background: rgb(35, 10, 144);
+	width: 1px;
+	height: 1px;
+	position: absolute;
+	left: 50%;
+	top: 46%;
+	box-shadow: -4px 16px 20px 12px rgb(13, 28, 243);
+	z-index: 6;
+	border-radius: 100%;
+}
+
+.tapis-roulant > div:nth-child(4) {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 34px;
+	overflow: hidden;
+}
+
+.tapis-roulant > div:nth-child(4) > 
+div:first-child {
+	position: absolute;
+	width: 29px;
+	height: 100%;
+	background: #a20b75;
+	box-shadow: 0 2px 0 0px rgb(0 0 0 / 25%),
+		inset 0 1px 0 0 rgb(255 255 255 / 20%);
+	z-index: 9;
+	animation-name: objet;
+	animation-duration: 3.8s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	left: -10px;
+	bottom: 3px;
+}
+
+.tapis-roulant > div:nth-child(4) > 
+div:first-child:after {
+	content: "";
+	width: 100%;
+	height: 70%;
+	background: rgba(0, 0, 0, 0.12);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tapis-roulant > div:nth-child(4) > 
+div:first-child > div:first-child {
+	width: 3px;
+	height: 3px;
+	background: #37353a;
+	position: absolute;
+	border-radius: 50%;
+	left: 5px;
+	top: 8px;
+}
+
+.tapis-roulant > div:nth-child(4) > 
+div:first-child > div:first-child:after {
+	content: "";
+	width: 3px;
+	height: 3px;
+	background: #37353a;
+	position: absolute;
+	border-radius: 50%;
+	left: 16px;
+}
+
+.tapis-roulant > div:nth-child(4) > 
+div:first-child > div:nth-child(2) {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	border-style: solid;
+	border-width: 3px;
+	border-color: transparent #fff #fff #fff;
+	border-radius: 0 0 50% 50%;
+	left: 7px;
+	top: 8px;
+	z-index: 10;
+	box-shadow: 0 4px 0 0px rgb(0 0 0 / 20%);
+	transition: height 0.5s;
+}
+
+button > div:nth-child(5) {
+	position: absolute;
+	top: -40px;
+	right: 10px;
+	color: rgb(242, 128, 56);
+	display: none;
+	font-size: 20px;
+	z-index: 9;
+}
+
+.tapis-roulant.added > div:nth-child(5) {
+	display: block;
+	animation-name: fadeOutTop;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+button > div:nth-child(6) {
+	position: absolute;
+	top: -50px;
+	left: 10px;
+	display: none;
+	color: rgb(226, 67, 67);
+    font-size: 25px;
+}
+
+.tapis-roulant.canceled > div:nth-child(6) {
+	display: block;
+	animation-name: scaleZoomOutTop;
+	animation-duration: 1s;
+	opacity: 0;
+}
+
+.container {
+	position: relative;
+	height: 60px;
+	margin: auto;
+	line-height: 60px;
+}
+@keyframes roule {
+	from {
+		transform: translateX(-50%);
+	}
+
+	to {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes objet {
+	from {
+		left: -10px;
+	}
+
+	to {
+		left: 200px;
+	}
+}
+
+@keyframes caisse {
+	from {
+		height: 0;
+	}
+
+	to {
+		height: 22px;
+	}
+}
+
+@keyframes fadeOutTop {
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+}
+
+.scaleZoomOutTop {
+	animation-name: scaleZoomOutTop;
+}
+
+@keyframes scaleZoomOutTop {
+	30%,
+	50% {
+		transform: scale(0.7);
+	}
+
+	60% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+}
+
+.caddie {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 17px;
+	vertical-align: -6px;
+	margin-right: 10px;
+	transform: scale(1);
+	transition-property: transform;
+	transition-duration: 0.3s;
+}
+
+.tapis-roulant .caddie {
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+	font-size: 0;
+	transform: scale(0);
+}
+
+.caddie__body {
+	width: 92%;
+	height: 60%;
+	background: #edefff;
+	transform: skew(-6deg);
+	position: absolute;
+	top: 0;
+	right: 0px;
+	border-radius: 2px;
+	border: 1px solid black;
+	border-left: none;
+}
+
+.caddie__body-left {
+	position: absolute;
+	background-color: #ced5ff;
+	left: -1%;
+	top: 1%;
+	width: 84%;
+	height: 60%;
+	border-left: 1px solid black;
+	border-radius: 2px;
+	border-top-left-radius: 8%;
+	border-top: 1px solid black;
+	border-top-right-radius: 0;
+}
+
+.caddie__top {
+	position: absolute;
+	top: -23%;
+	left: -2.5%;
+	width: 2px;
+	height: 27%;
+	transform: skew(19deg);
+	background-color: black;
+}
+
+.caddie__top-support {
+	position: absolute;
+	top: -30%;
+	left: -12.5%;
+	background-color: #757575;
+	width: 4px;
+	height: 2px;
+	border-radius: 10px;
+	z-index: 2;
+}
+
+.caddie__trou {
+	width: 17px;
+	height: 1px;
+	background-color: #7f8dd8;
+	border-radius: 10px;
+	position: absolute;
+	top: 4px;
+	left: 7%;
+	z-index: 9;
+}
+
+.caddie__trou2 {
+	width: 11px;
+	height: 1px;
+	background-color: #7f8dd8;
+	border-radius: 10px;
+	position: absolute;
+	top: 9px;
+	left: 18%;
+	z-index: 9;
+}
+
+.caddie__trou3 {
+	width: 11px;
+	height: 1px;
+	background-color: #7f8dd8;
+	border-radius: 10px;
+	position: absolute;
+	top: 6px;
+	left: 18%;
+	z-index: 9;
+}
+
+.caddie__roue {
+	position: absolute;
+	bottom: -1px;
+	left: 2px;
+	width: 3px;
+	height: 3px;
+	background-color: #808080;
+	border-radius: 100%;
+	border: 1px solid black;
+}
+
+.caddie__roue2 {
+	position: absolute;
+	bottom: -1px;
+	left: 11px;
+	width: 3px;
+	height: 3px;
+	background-color: #808080;
+	border-radius: 100%;
+	border: 1px solid black;
+}
